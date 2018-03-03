@@ -179,4 +179,33 @@ footer {
 	font-size: 14px;
 }
 
+/* Place Detail */
+.place_detail {
+	padding: 30px 0;
+}
+
+/* Place Header Detail  */
+.place_header_detail_container {	
+	background-color: white;
+	height: 360px;
+	width: 100%;
+	border: 1px solid #e7e7e7;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.place_header_detail_img {
+	height: 60%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.place_header_detail_name {
+	font-size: 120%;
+}
+
+.place_header_detail_location {
+	font-size: 15px;
+}
+
 /* END OF App.js */

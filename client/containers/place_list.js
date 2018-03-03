@@ -13,20 +13,20 @@ export default class PlaceList  extends React.Component {
 		</Container>
 		<Container>
 			<Row>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
-				<PlaceItem link_url="/"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
+				<PlaceItem link_url="/place"/>
 			</Row>
 		</Container>
      </div>
