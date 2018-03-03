@@ -5,8 +5,6 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
 
-var jwt = require("jsonwebtoken");
-
 // IMPORTS //
 var indexRoutes = require('./routes/index');
 var config = require("../config/database.js");
