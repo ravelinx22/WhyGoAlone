@@ -13,13 +13,11 @@ router.get('/signUp', function (req, res) {
 });
 
 router.get('/signIn', function(req, res) {
-  res.sendFile(path.join(__dirname, '../../client(index.html'));
+  res.sendFile(path.join(__dirname, '../../client/index.html'));
 })
 	
 // API
-router.use("/api/venues", venueRouter);
 router.use("/api/users", userRouter)
-router.use("/api/interest", interestRouter)
 
 module.exports = router;
 ;
