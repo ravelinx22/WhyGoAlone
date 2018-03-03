@@ -4,6 +4,7 @@ var fs = require('fs');
 var express = require('express');
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
+var dotenv = require('dotenv').config();
 
 // IMPORTS //
 var indexRoutes = require('./routes/index');
