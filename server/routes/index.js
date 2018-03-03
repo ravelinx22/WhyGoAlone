@@ -2,7 +2,6 @@ var path = require('path');
 var router = require('express').Router();
 var interestRouter = require("./interest.js");
 var userRouter = require("./user");
-var venueRouter = require("./venue");
 // Web App
 router.get('/', function (req, res) {
   //res.sendFile(path.join(__dirname, '../../client/index.html'));
