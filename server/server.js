@@ -2,21 +2,27 @@
 var path = require('path');
 var fs = require('fs');
 var express = require('express');
+var bodyParser = require("body-parser");
+var morgan = require("morgan");
+
+var jwt = require("jsonwebtoken");
 
 // IMPORTS //
 var indexRoutes = require('./routes/index');
+var config = require("../config/database.js");
 
 // CREATE APP //
 var app = express();
 
-// VIEW ENGINE //
-app.set('view engine', 'html');
-app.engine('html', function (path, options, callbacks) {
-  fs.readFile(path, 'utf-8', callback);
-});
-
 // MIDDLEWARE //
 app.use(express.static(path.join(__dirname, '../client')));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(morgan("dev"));
+
+// KEYS
+app.set('superSecret', config.secret); 
 
 // ROUTES //
 app.use('/', indexRoutes);
