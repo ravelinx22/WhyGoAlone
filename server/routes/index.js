@@ -15,7 +15,7 @@ router.get('/signIn', function(req, res) {
   res.sendFile(path.join(__dirname, '../../client/index.html'));
 });
 
-router.get('/category', function(req, res) {
+router.get('/places', function(req, res) {
   res.sendFile(path.join(__dirname, '../../client/index.html'));
 });
 	

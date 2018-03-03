@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import SignUp from "./containers/sign_up";
 import SignIn from "./containers/sign_in";
 import Home from "./containers/home";
-import CategoryList from "./containers/category_list"
+import PlaceList from "./containers/place_list"
 
 ReactDOM.render(
 	<Router>
@@ -15,7 +15,7 @@ ReactDOM.render(
 				<Route exact path="/" component={Home}/>
 				<Route exact path="/signUp" component={SignUp}/>
 				<Route exact path="/signIn" component={SignIn}/>
-				<Route path="/category" component={CategoryList}/>
+				<Route path="/places" component={PlaceList}/>
 			</Switch>
 		</App>
 	</Router>

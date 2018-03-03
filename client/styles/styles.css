@@ -109,4 +109,74 @@ footer {
 	font-size: 14px;
 }
 
+/* Place List */
+.place_list {
+	padding: 30px 0;
+}
+
+/* Place Item */
+.place_item_container {
+	background-color: white;
+	height: 220px;
+	width: 100%;
+	border: 1px solid #e7e7e7;
+	border-radius: 5px;
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+.place_item_img {
+	height: 60%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.place_item_info {
+	height: 40%;
+	padding: 10px;
+	width: 100%;
+}
+
+.place_item_name {
+	font-size: 17px;
+}
+
+.place_item_location {
+	font-size: 14px;
+}
+
+/* Place Header List */
+.place_header_list_container {	
+	background-color: white;
+	height: 360px;
+	width: 100%;
+	border: 1px solid #e7e7e7;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.place_header_list_img {
+	height: 60%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.place_header_list_info {
+	height: 40%;
+	padding: 10px;
+	width: 100%;
+}
+
+.place_header_list_name {
+	font-size: 2rem;
+}
+
+.place_header_list_description {
+	font-size: 15px;
+}
+
+.place_header_list_length {
+	font-size: 14px;
+}
+
 /* END OF App.js */

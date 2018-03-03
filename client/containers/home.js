@@ -15,13 +15,14 @@ export default class Home  extends React.Component {
 			<Container>
 				<SectionTitle name="Categorias" description="Explora listas de los mejores restaurantes, cafeterías, pubs y bares en alrededor de ti."/>
 				<Row className="category_grid">
-					<CategoryItem link_url="/category" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
-					<CategoryItem link_url="/category" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
-					<CategoryItem link_url="/category" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
-					<CategoryItem link_url="/category" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
-					<CategoryItem link_url="/category" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
-					<CategoryItem link_url="/category" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
-					<CategoryItem link_url="/category" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
+					<CategoryItem link_url="/places" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
+					<CategoryItem link_url="/places" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
+					<CategoryItem link_url="/places" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
+					<CategoryItem link_url="/places" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
+					<CategoryItem link_url="/places" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
+					<CategoryItem link_url="/places" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
+					<CategoryItem link_url="/places" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
+					<CategoryItem link_url="/places" name="Buenas" description="desc desc desc desc desc desc desc desc"/>	
 				</Row>
 			</Container>
 		</div>
