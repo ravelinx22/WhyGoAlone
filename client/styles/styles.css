@@ -29,4 +29,27 @@ footer {
 	margin-top: 55px;
 }
 
+/* Home */
+.home_header_img {
+	/* TODO:// PONER FOTO  */
+	background-color: red;
+	height: 600px;
+	padding-top: 200px;
+	width: 100%;
+}
+
+.home_header_logo {
+	margin-bottom: 20px;
+}
+
+.btn_nearby {
+	margin-top: 20px;
+}
+
+/* Search Place Input */
+.search_input {
+	margin-right: 10px;
+}
+
+
 /* END OF App.js */
