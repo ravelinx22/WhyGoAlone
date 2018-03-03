@@ -15,8 +15,9 @@ export default class App extends React.Component {
 		  <Button outline color="danger" className="ml-auto nav_btn">Sign In</Button>
 		  <Button outline color="danger" className="nav_btn">Sign Up</Button>
         </Navbar>
-		
-		
+		<div class="content">
+			{this.props.children}		
+		</div>
 		<footer className="bg-dark">
 			<div class="footer_brand">Why Go Alone</div>
 			<div class="footer_makers">William Ravelo M & Nicolas Aguilas</div>
@@ -26,3 +27,4 @@ export default class App extends React.Component {
     );
   }
 }
+

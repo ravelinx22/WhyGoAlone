@@ -2,5 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/app';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import SignUp from "./containers/sign_up";
+import SignIn from "./containers/sign_in";
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+	<Router>
+		<App>
+			<Switch>
+				<Route exact path="/signUp" component={SignUp}/>
+				<Route exact path="/signIn" component={SignIn}/>
+			</Switch>
+		</App>
+	</Router>
+	,document.getElementById('app'));
