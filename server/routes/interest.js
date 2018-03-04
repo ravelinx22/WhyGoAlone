@@ -19,27 +19,46 @@ router.post('/', function (req, res) {
 
 	User.findById(req.body.person, function (err, user) {
 		if (err) return handleError(err);
-		console.log(user.interests);
 		user.interests.push(newInterest);
-		console.log(user.interests);
 		user.save(function (err, updatedUser) {
 			if (err) return handleError(err);
 
 		});
 	});
+
+	res.json(newInterest);
 });
 
-router.get("/:userId", function(req, res) {
-	console.log(req.params.userId.replace(/\s/g,''));
+router.get("/user/:userId", function(req, res) {
 
-	User.
-	findById(req.params.userId.replace(/\s/g,'')).
+	User.findById(req.params.userId.replace(/\s/g,'')).
 	populate('interests').
 	exec(function (err, user) {
 		if (err) return handleError(err);
-		res = user.interests;
-		console.log(user.interests);
+
+		res.interests = user.interests;
 		res.send(user.interests);
+	});
+});
+
+
+router.get("/venue/:venueId", function(req, res) {
+
+	User.find({}).
+	populate('interests').
+	exec(function (err, users) {
+		if (err) return handleError(err);
+		let afterFilter = users.filter(function(u){
+
+			let c = u.interests.filter(function(i){
+				return i.venue === req.params.venueId;
+			});
+
+			return c.length > 0;
+		});
+
+		res.users = afterFilter;
+		res.send(afterFilter);
 	});
 });
 
