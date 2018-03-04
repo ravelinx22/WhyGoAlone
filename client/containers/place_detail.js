@@ -18,8 +18,14 @@ export default class PlaceDetail  extends React.Component {
 	this.loadPlaceDetail = loadPlaceDetail.bind(this);
   }
 
-  componentDidMount() {
-	this.loadPlaceDetail(this);
+  componentDidMount() {  
+	const { history } = this.props;
+
+	if (!localStorage.getItem('token')) {
+		history.push('/signIn');
+	} else {
+		this.loadPlaceDetail(this);
+	}
   }
 
 	

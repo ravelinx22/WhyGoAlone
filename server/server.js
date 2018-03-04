@@ -20,9 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-// KEYS
-app.set('superSecret', config.secret); 
-
 // ROUTES //
 app.use('/', indexRoutes);
 

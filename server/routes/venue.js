@@ -1,6 +1,7 @@
 var router = require("express").Router();
 var jwt = require("jsonwebtoken");
 var request = require("request");
+var config = require("../../config/database.js");
 const basepath = "https://api.foursquare.com/v2";
 const message_error = "Opps, there was an error. Try again.";
 
@@ -108,33 +109,44 @@ router.get('/search/:venueId', function(req, res){
 
 // Search category
 router.get('/category/:categoryId', function(req, res){
-	request({
-		url: basepath + '/venues/search',
-		method: 'GET',
-		qs: {
-			client_id: process.env.FQ_CLIENT_ID,
-			client_secret: process.env.FQ_SECRET,
-			categoryId: req.params.categoryId,
-			limit: 15,
-			ll: req.query.ll,
-			v: '20170801'
-		}
-		}, function(err_f, res_f, body_f) {
-			if (err_f) {
-				res.json({success: false, message: message_error})
-			} else {
-				try {
-					response_json = {};
-					json = JSON.parse(body_f);
-					response_json["success"] = true;
-				console.log(json)
-					response_json["venues"] = json.response.venues;
-				res.json(response_json);
-				} catch(error) {
-					res.json({success: false, message: message_error})
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+	if(token) {
+		jwt.verify(token, config.secret, function(err, decoded) {
+			if(err) throw err;
+			request({
+				url: basepath + '/venues/search',
+				method: 'GET',
+				qs: {
+					client_id: process.env.FQ_CLIENT_ID,
+					client_secret: process.env.FQ_SECRET,
+					categoryId: req.params.categoryId,
+					limit: 15,
+					ll: req.query.ll,
+					v: '20170801'
 				}
-			}
+				}, function(err_f, res_f, body_f) {
+					if (err_f) {
+						res.json({success: false, message: message_error})
+					} else {
+						try {
+							response_json = {};
+							json = JSON.parse(body_f);
+							response_json["success"] = true;
+							console.log(json)
+							response_json["venues"] = json.response.venues;
+							res.json(response_json);
+						} catch(error) {
+							res.json({success: false, message: message_error})
+						}
+					}
+				});	
 		});
+	} else {
+		return res.status(403).send({
+			success: false,
+			message: "No token provided"
+		});
+	}	
 });
 
 module.exports = router;

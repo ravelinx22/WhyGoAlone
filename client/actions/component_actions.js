@@ -27,7 +27,11 @@ export function getMyLocation(component) {
 
 		console.log(url);
 
-		fetch(url)
+		fetch(url, {
+			headers: new Headers({
+				"x-access-token": localStorage.getItem('token'),
+			})
+		})
 	      .then(results => {
 			return results.json();
 		  }).then(data => {
@@ -52,7 +56,11 @@ export function loadPlaceDetail(component) {
 	const query = QueryString.parse(component.props.location.search);
 	const place_id = query.place_id;
 
-	fetch("/api/venues/search/" + place_id)
+	fetch("/api/venues/search/" + place_id, {
+		headers: new Headers({
+			"x-access-token": localStorage.getItem('token'),
+		})
+	})
 	  .then(results => {
 		return results.json();
 	  }).then(data => {

@@ -16,9 +16,15 @@ export default class PlaceList  extends React.Component {
 	}
 	this.getMyLocation = getMyLocation.bind(this);
   }
-
+	
   componentDidMount() {
+	const { history } = this.props;
+
+	if (!localStorage.getItem('token')) {
+		history.push('/signIn');
+	} else {
 	  this.getMyLocation(this);
+	}
   }
 
   render() {
