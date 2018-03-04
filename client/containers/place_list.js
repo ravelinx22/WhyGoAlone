@@ -3,17 +3,22 @@ import '../styles/styles.css';
 import { PlaceItem } from '../components/place_item';
 import { Container, Row, Col } from 'reactstrap';
 import { PlaceHeaderList } from '../components/place_header_list.js';
+import QueryString from 'query-string';
 
 export default class PlaceList  extends React.Component {
   constructor(props) {
 	super(props);
 	this.state = {
+		name: "",
 		places: [],
 	}
   }
 
   componentDidMount() {
-	  fetch("/api/venues/category/4d4b7104d754a06370d81259?ll=40.7243,-74.0010")
+	  console.log(this.props);
+	  const query = QueryString.parse(this.props.location.search);
+	  console.log(query.category_id);
+	  fetch("/api/venues/category/" + query.category_id + " ?ll=40.7243,-74.0010")
 	  .then(results => {
 		return results.json();
 	  }).then(data => {
@@ -24,7 +29,7 @@ export default class PlaceList  extends React.Component {
 			);
 		});
 
-		this.setState({places: places});
+		this.setState({places: places, name: query.name});
 	  });
   }
 
@@ -32,7 +37,7 @@ export default class PlaceList  extends React.Component {
     return (
       <div className="place_list">
 		<Container>
-			<PlaceHeaderList name="Algo3" description="Algo2" length="Algo1"/>
+			<PlaceHeaderList name={this.state.name} description="This were the results we found for you" length={this.state.places.length + " results"}/>
 		</Container>
 		<Container>
 			<Row>
