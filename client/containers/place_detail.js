@@ -11,7 +11,7 @@ export default class PlaceDetail  extends React.Component {
     return (
 		<div className="place_detail">
 			<Container>
-				<PlaceHeaderDetail/>
+				<PlaceHeaderDetail name="Name" where="Carrera"/>
 			</Container>
 			<Container>
 				<PlaceDetailInfo/>
@@ -21,16 +21,7 @@ export default class PlaceDetail  extends React.Component {
 			</Container>
 			<Container>
 				<Col md="12" className="interest_item_list">
-					<InterestItem/>	
-					<InterestItem/>	
-					<InterestItem/>	
-					<InterestItem/>	
-					<InterestItem/>	
-					<InterestItem/>	
-					<InterestItem/>	
-					<InterestItem/>	
-					<InterestItem/>	
-					<InterestItem/>	
+					<InterestItem name="Nombre" message="Mi comentario" profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url="/"/>	
 				</Col>
 			</Container>
 		</div>

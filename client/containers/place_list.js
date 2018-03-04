@@ -9,24 +9,19 @@ export default class PlaceList  extends React.Component {
     return (
       <div className="place_list">
 		<Container>
-			<PlaceHeaderList/>
+			<PlaceHeaderList name="Algo3" description="Algo2" length="Algo1"/>
 		</Container>
 		<Container>
 			<Row>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
-				<PlaceItem link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
+				<PlaceItem name="Nombre" where="Buenas" link_url="/place"/>
 			</Row>
 		</Container>
      </div>
