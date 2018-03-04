@@ -141,6 +141,10 @@ export function signUp(component) {
 		if(responseJSON.success == true) {
 			console.log(responseJSON);
 			localStorage.setItem('token', responseJSON.token);
+			localStorage.setItem('user_name', responseJSON.user.name);
+			localStorage.setItem('user_cell', responseJSON.user.cell);
+			localStorage.setItem('user_email', responseJSON.user.email);
+			localStorage.setItem('user_id', responseJSON.token.user_id);
 			component.props.history.push("/");
 		} else {
 			alert(responseJSON.message);
