@@ -79,8 +79,12 @@ export function signIn(component) {
 			email: component.state.email,
 			password: component.state.password,
 		})
-	console.log(body);
+
 	console.log(localStorage.getItem('token'));
+	console.log(localStorage.getItem('user_cell'));
+	console.log(localStorage.getItem('user_name'));
+	console.log(localStorage.getItem('user_id'));
+	console.log(localStorage.getItem('user_email'));
 	fetch("/api/users/signIn", {
 		method: 'POST',
 		headers: new Headers({
@@ -93,6 +97,10 @@ export function signIn(component) {
 		if(responseJSON.success == true) {
 			console.log(responseJSON);
 			localStorage.setItem('token', responseJSON.token);
+			localStorage.setItem("user_name", responseJSON.user.name);
+			localStorage.setItem("user_cell", responseJSON.user.cell);
+			localStorage.setItem("user_email", responseJSON.user.email);
+			localStorage.setItem("user_id", responseJSON.user._id);
 			component.props.history.push("/");
 		} else {
 			alert(responseJSON.message);
