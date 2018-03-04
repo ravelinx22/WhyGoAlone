@@ -22,7 +22,13 @@ router.post('/signUp', function(req, res) {
 
 		res.json({
 			success: true,
-			token: token
+			token: token,
+			user: {
+				name: newUser.name,
+				cell: newUser.cell,
+				email: newUser.email,
+				_id: newUser._id
+			}
 		});
 	});
 });
@@ -47,7 +53,13 @@ router.post('/signIn', function(req, res){
 
 				res.json({
 					success: true,
-					token: token
+					token: token,
+					user: {
+						name: user.name,
+						cell: user.cell,
+						email: user.email,
+						_id: user._id
+					}
 				});
 			}
 		}
