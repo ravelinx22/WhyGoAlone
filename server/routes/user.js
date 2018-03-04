@@ -1,5 +1,5 @@
 var router = require("express").Router();
-var User = require("../models/user");
+var User = require("../models/User");
 var mongoose = require("mongoose");
 var jwt = require('jsonwebtoken');
 var config = require("../../config/database.js");

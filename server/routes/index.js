@@ -1,7 +1,9 @@
 var path = require('path');
 var router = require('express').Router();
-var interestRouter = require("./interest.js");
 var userRouter = require("./user");
+var interestRouter = require("./interest.js");
+var config = require("../../config/database.js");
+
 // Web App
 router.get('/', function (req, res) {
   //res.sendFile(path.join(__dirname, '../../client/index.html'));
@@ -17,6 +19,7 @@ router.get('/signIn', function(req, res) {
 	
 // API
 router.use("/api/users", userRouter)
+router.use("/api/interest", interestRouter)
 
 module.exports = router;
 ;
