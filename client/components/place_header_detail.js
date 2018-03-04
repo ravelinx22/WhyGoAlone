@@ -13,7 +13,7 @@ export const PlaceHeaderDetail = (props) =>  {
 					<div className="place_header_detail_name">Algo</div>
 					<div clasName="place_header_detail_location">Algo</div>
 					<hr/>
-					<Link to="/">
+					<Link to="/"> 
 						<FontAwesomeIcon icon={faBookmark} /> I'm Interested 
 					</Link>
 				</div>
