@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'reactstrap';
-import { SearchPlaceInput } from './search_place_input';
+import SearchPlaceInput from './search_place_input';
 import { Link } from 'react-router-dom';
 
 export const HomeHeader = (props) => {

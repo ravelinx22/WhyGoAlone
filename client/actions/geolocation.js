@@ -21,6 +21,8 @@ export function getMyLocation(component) {
         var url = category_url;
 		if(type == "nearby") {
 			url = nearby_url;
+		} else if(type == "search") {
+			url = search_url;
 		}
 
 		console.log(url);

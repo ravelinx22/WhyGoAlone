@@ -66,6 +66,10 @@ footer {
 	margin-right: 10px;
 }
 
+.btn_search {
+	height: 38px;
+}
+
 /* Category Item */
 .category_item_container {
 	border: 1px solid #e7e7e7;
