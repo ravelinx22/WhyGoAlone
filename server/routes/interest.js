@@ -8,7 +8,6 @@ var User = require("../models/User");
 router.post('/', function (req, res) {
 
 	var newInterest = new Interest({
-		date: req.body.date,
 		message: req.body.message,
 		venue: req.body.venue,
 		person: req.body.person
