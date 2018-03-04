@@ -16,6 +16,17 @@ router.post('/', function (req, res) {
 	newInterest.save(function (err) {
 		if (err) return handleError(err);
 	});
+
+	User.findById(req.body.person, function (err, user) {
+		if (err) return handleError(err);
+		console.log(user.interests);
+		user.interests.push(newInterest);
+		console.log(user.interests);
+		user.save(function (err, updatedUser) {
+			if (err) return handleError(err);
+
+		});
+	});
 });
 
 module.exports=router;
