@@ -5,7 +5,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import { PlaceDetailInfo } from '../components/place_detail_info';
 import { LeaveComment } from '../components/leave_comment';
 import { InterestItem } from '../components/interest_item';
-import { loadPlaceDetail, createInterest } from '../actions/component_actions';
+import { loadPlaceDetail, createInterest, getVenueInterest } from '../actions/component_actions';
 
 export default class PlaceDetail  extends React.Component {
     constructor(props) {
@@ -14,10 +14,12 @@ export default class PlaceDetail  extends React.Component {
 			name: "",
 			address: "",
 			venue_data: {},
-			user_comment: ""
+			user_comment: "",
+			interest_list: [],
 		}
 		this.loadPlaceDetail = loadPlaceDetail.bind(this);
 		this.createInterest = createInterest.bind(this);
+		this.getVenueInterest = getVenueInterest.bind(this);
 	}
   
   updateComment(evt) {
@@ -33,7 +35,7 @@ export default class PlaceDetail  extends React.Component {
 		history.push('/signIn');
 	} else {
 		this.loadPlaceDetail(this);
-		this.createInterest(this);
+		this.getVenueInterest(this);
 	}
   }
 
@@ -60,7 +62,7 @@ export default class PlaceDetail  extends React.Component {
 			</Container>
 			<Container>
 				<Col md="12" className="interest_item_list">
-					<InterestItem name="Nombre" message="Mi comentario" profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url="/"/>	
+					{this.state.interest_list}
 				</Col>
 			</Container>
 		</div>

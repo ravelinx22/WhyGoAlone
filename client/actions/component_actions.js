@@ -4,6 +4,7 @@ import '../styles/styles.css';
 import { PlaceItem } from '../components/place_item';
 import { Container, Row, Col } from 'reactstrap';
 import { PlaceHeaderList } from '../components/place_header_list.js';
+import { InterestItem } from '../components/interest_item';
 
 export function getMyLocation(component) {
 	const location = window.navigator && window.navigator.geolocation;
@@ -157,11 +158,14 @@ export function signUp(component) {
 }
 
 export function createInterest(component) {
+	const query = QueryString.parse(component.props.location.search);
+	const place_id = query.place_id;
+
 	console.log(component.state.user_comment);
 	const body = JSON.stringify({
 			message: component.state.user_comment,
 			person: localStorage.getItem('user_id'),
-			venue: component.state.venue_data._id,
+			venue: place_id,
 		})
 
 	console.log(body);
@@ -177,7 +181,6 @@ export function createInterest(component) {
 	.then((responseJSON) => {
 		if(responseJSON.success == true) {
 			console.log(responseJSON);
-			// Add interest to interest list of component
 		} else {
 			console.log("Error")
 		}
@@ -185,4 +188,28 @@ export function createInterest(component) {
 	.catch((error) => {
 		console.error(error);
 	});
+}
+
+export function getVenueInterest(component) {	
+	const query = QueryString.parse(component.props.location.search);
+	const place_id = query.place_id;
+	
+	fetch("/api/interest/venue/" + place_id, {
+		headers: new Headers({
+			"x-access-token": localStorage.getItem('token'),
+		})
+	})
+	  .then(results => {
+		return results.json();
+	  }).then(data => {
+		    let interest_list = data.map((item) => {
+			  
+			  const interest = item.interests[0];
+			  console.log(interest);
+			  return(	
+					<InterestItem name={item.name}  message={interest.message}  profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url="/"/>	
+			  );
+		  });
+		component.setState({interest_list: interest_list});
+	  });
 }
