@@ -35,7 +35,7 @@ export function getMyLocation(component) {
 		    let places = data.venues.map((venue) => {
 				console.log(data.venue);
 			  return(
-				  <PlaceItem place_id={venue.id} name={venue.name} where={venue.location.address} link_url="/place" key={venue.id}/>
+				  <PlaceItem name={venue.name} where={venue.location.address} link_url={"/place?place_id=" + venue.id} key={venue.id}/>
 		    );
 		  });
 
@@ -46,4 +46,30 @@ export function getMyLocation(component) {
         component.setState({ lat: 'err-latitude', lon: 'err-longitude' });
       })
     }
+}
+
+export function loadPlaceDetail(component) {
+	const query = QueryString.parse(component.props.location.search);
+	const place_id = query.place_id;
+
+	fetch("/api/venues/search/" + place_id)
+	  .then(results => {
+		return results.json();
+	  }).then(data => {
+		console.log(data.venue);
+		console.log(data.venue);
+		component.setState({name: data.venue.name});
+		component.setState({address: data.venue.location.address});
+
+		var venue_data = {}
+		venue_data["phone"] = (data.venue.contact.phone) ? data.venue.contact.phone:null ;
+		venue_data["page_url"] = (data.venue.url) ? data.venue.url: null ;
+		venue_data["rating"] = (data.venue.rating) ? data.venue.rating : null ;
+		venue_data["twitter"] = (data.venue.contact.twitter) ? data.venue.contact.twitter: null;
+		venue_data["categories"] = (data.venue.categories) ? data.venue.categories: null ;
+		venue_data["location"] = (data.venue.location) ? data.venue.location : null;
+		component.setState({ venue_data: venue_data});
+		  console.log(venue_data);
+	  });
+
 }
