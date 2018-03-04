@@ -41,6 +41,14 @@ export default class SignUp  extends React.Component {
 	}
 
 
+  componentDidMount() {  
+	const { history } = this.props;
+
+	if (localStorage.getItem('token')) {
+		history.push('/');
+	}
+  }
+
 	render() {
 		return (
 			<Container>

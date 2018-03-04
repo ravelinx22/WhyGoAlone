@@ -5,21 +5,36 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import { PlaceDetailInfo } from '../components/place_detail_info';
 import { LeaveComment } from '../components/leave_comment';
 import { InterestItem } from '../components/interest_item';
-import { loadPlaceDetail } from '../actions/component_actions';
+import { loadPlaceDetail, createInterest } from '../actions/component_actions';
 
 export default class PlaceDetail  extends React.Component {
     constructor(props) {
-	super(props);
-	this.state = {
-		name: "",
-		address: "",
-		venue_data: {},
+		super(props);
+		this.state = {
+			name: "",
+			address: "",
+			venue_data: {},
+			user_comment: ""
+		}
+		this.loadPlaceDetail = loadPlaceDetail.bind(this);
+		this.createInterest = createInterest.bind(this);
 	}
-	this.loadPlaceDetail = loadPlaceDetail.bind(this);
+  
+  updateComment(evt) {
+	this.setState({
+		user_comment: evt.target.value
+	});
   }
 
-  componentDidMount() {
-	this.loadPlaceDetail(this);
+  componentDidMount() {  
+	const { history } = this.props;
+
+	if (!localStorage.getItem('token')) {
+		history.push('/signIn');
+	} else {
+		this.loadPlaceDetail(this);
+		this.createInterest(this);
+	}
   }
 
 	
@@ -41,7 +56,7 @@ export default class PlaceDetail  extends React.Component {
 				<PlaceDetailInfo venue_data={this.state.venue_data}/>
 			</Container>
 			<Container>
-				<LeaveComment/>
+				<LeaveComment inputListener={(evt) => this.updateComment(evt)} leaveComment={() => this.createInterest(this)}/>
 			</Container>
 			<Container>
 				<Col md="12" className="interest_item_list">

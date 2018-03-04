@@ -27,7 +27,11 @@ export function getMyLocation(component) {
 
 		console.log(url);
 
-		fetch(url)
+		fetch(url, {
+			headers: new Headers({
+				"x-access-token": localStorage.getItem('token'),
+			})
+		})
 	      .then(results => {
 			return results.json();
 		  }).then(data => {
@@ -52,7 +56,11 @@ export function loadPlaceDetail(component) {
 	const query = QueryString.parse(component.props.location.search);
 	const place_id = query.place_id;
 
-	fetch("/api/venues/search/" + place_id)
+	fetch("/api/venues/search/" + place_id, {
+		headers: new Headers({
+			"x-access-token": localStorage.getItem('token'),
+		})
+	})
 	  .then(results => {
 		return results.json();
 	  }).then(data => {
@@ -62,6 +70,8 @@ export function loadPlaceDetail(component) {
 		component.setState({address: data.venue.location.address});
 
 		var venue_data = {}
+
+		venue_data["_id"] = (data.venue.id) ? data.venue.id : null;
 		venue_data["phone"] = (data.venue.contact.phone) ? data.venue.contact.phone:null ;
 		venue_data["page_url"] = (data.venue.url) ? data.venue.url: null ;
 		venue_data["rating"] = (data.venue.rating) ? data.venue.rating : null ;
@@ -79,8 +89,12 @@ export function signIn(component) {
 			email: component.state.email,
 			password: component.state.password,
 		})
-	console.log(body);
+
 	console.log(localStorage.getItem('token'));
+	console.log(localStorage.getItem('user_cell'));
+	console.log(localStorage.getItem('user_name'));
+	console.log(localStorage.getItem('user_id'));
+	console.log(localStorage.getItem('user_email'));
 	fetch("/api/users/signIn", {
 		method: 'POST',
 		headers: new Headers({
@@ -93,6 +107,10 @@ export function signIn(component) {
 		if(responseJSON.success == true) {
 			console.log(responseJSON);
 			localStorage.setItem('token', responseJSON.token);
+			localStorage.setItem("user_name", responseJSON.user.name);
+			localStorage.setItem("user_cell", responseJSON.user.cell);
+			localStorage.setItem("user_email", responseJSON.user.email);
+			localStorage.setItem("user_id", responseJSON.user._id);
 			component.props.history.push("/");
 		} else {
 			alert(responseJSON.message);
@@ -131,6 +149,36 @@ export function signUp(component) {
 	.catch((error) => {
 		console.error(error);
 		alert("Error");
-	});	
+	});
 }
 
+export function createInterest(component) {
+	console.log(component.state.user_comment);
+	const body = JSON.stringify({
+			message: component.state.user_comment,
+			person: localStorage.getItem('user_id'),
+			venue: component.state.venue_data._id,
+		})
+
+	console.log(body);
+	fetch("/api/interest", {
+		method: 'POST',
+		headers: new Headers({
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"x-access-token": localStorage.getItem('token'),
+		}),
+		 body:	body	})
+	.then((response) => response.json())
+	.then((responseJSON) => {
+		if(responseJSON.success == true) {
+			console.log(responseJSON);
+			// Add interest to interest list of component
+		} else {
+			console.log("Error")
+		}
+	})
+	.catch((error) => {
+		console.error(error);
+	});
+}
