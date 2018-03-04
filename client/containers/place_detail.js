@@ -7,11 +7,32 @@ import { LeaveComment } from '../components/leave_comment';
 import { InterestItem } from '../components/interest_item';
 
 export default class PlaceDetail  extends React.Component {
+    constructor(props) {
+	super(props);
+	this.state = {
+		name: "",
+		address: "",
+	}
+  }
+
+  componentDidMount() {
+	  fetch("/api/venues/search/4b61ea3ff964a520002b2ae3")
+	  .then(results => {
+		return results.json();
+	  }).then(data => {
+		console.log(data.venue);
+		console.log(data.venue);
+		this.setState({name: data.venue.name});
+		this.setState({address: data.venue.location.address});
+	  });
+  }
+
+	
   render() {
     return (
 		<div className="place_detail">
 			<Container>
-				<PlaceHeaderDetail name="Name" where="Carrera"/>
+				<PlaceHeaderDetail name={this.state.name} where={this.state.address}/>
 			</Container>
 			<Container>
 				<PlaceDetailInfo/>
