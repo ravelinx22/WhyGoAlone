@@ -1,10 +1,12 @@
 var path = require('path');
 var router = require('express').Router();
 var userRouter = require("./user");
-var venueRouter = require("./venue");
+var interestRouter = require("./interest.js");
+var config = require("../../config/database.js");
+
 // Web App
 router.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../../client/index.html'));
+  //res.sendFile(path.join(__dirname, '../../client/index.html'));
 });
 	
 router.get('/signUp', function (req, res) {
@@ -25,7 +27,8 @@ router.get('/place', function(req, res) {
 });
 
 // API
-router.use("/api/users", userRouter);
-router.use("/api/venues", venueRouter);
+router.use("/api/users", userRouter)
+router.use("/api/interest", interestRouter)
 
 module.exports = router;
+;
