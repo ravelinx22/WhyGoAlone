@@ -191,6 +191,7 @@ footer {
 	width: 100%;
 	border: 1px solid #e7e7e7;
 	border-radius: 5px;
+	margin-bottom: 10px;
 	overflow: hidden;
 }
 
@@ -206,6 +207,29 @@ footer {
 
 .place_header_detail_location {
 	font-size: 15px;
+}
+
+/* Place Detail Info */
+.place_detail_info_container {
+	background-color: white;
+	width: 100%;
+	border: 1px solid #e7e7e7;
+	border-radius: 5px;
+	overflow: hidden;
+	padding: 20px 20px 0 20px;
+}
+
+/* Place Detail Info Item */
+.place_detail_info_item_data {
+	margin-bottom: 20px;
+}
+
+.place_detail_info_item_name {
+	font-size: 18px;
+}
+
+.place_detail_info_item_data {
+	font-size: 14px;
 }
 
 /* END OF App.js */

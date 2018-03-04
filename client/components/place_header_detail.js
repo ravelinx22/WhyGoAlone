@@ -2,6 +2,8 @@ import React from 'react'
 import '../styles/styles.css';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faBookmark from '@fortawesome/fontawesome-free-solid/faBookmark'
 
 export const PlaceHeaderDetail = (props) =>  {
 	return(
@@ -12,7 +14,7 @@ export const PlaceHeaderDetail = (props) =>  {
 					<div clasName="place_header_detail_location">Algo</div>
 					<hr/>
 					<Link to="/">
-						Algo
+						<FontAwesomeIcon icon={faBookmark} /> I'm Interested 
 					</Link>
 				</div>
 			</div>
