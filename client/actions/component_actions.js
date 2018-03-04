@@ -70,6 +70,8 @@ export function loadPlaceDetail(component) {
 		component.setState({address: data.venue.location.address});
 
 		var venue_data = {}
+
+		venue_data["_id"] = (data.venue.id) ? data.venue.id : null;
 		venue_data["phone"] = (data.venue.contact.phone) ? data.venue.contact.phone:null ;
 		venue_data["page_url"] = (data.venue.url) ? data.venue.url: null ;
 		venue_data["rating"] = (data.venue.rating) ? data.venue.rating : null ;
@@ -119,3 +121,35 @@ export function signIn(component) {
 		alert("Error");
 	});	
 }
+
+export function createInterest(component) {
+	console.log(component.state.user_comment);
+	const body = JSON.stringify({
+			message: component.state.user_comment,
+			person: localStorage.getItem('user_id'),
+			venue: component.state.venue_data._id,
+		})
+
+	console.log(body);
+	fetch("/api/interest", {
+		method: 'POST',
+		headers: new Headers({
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"x-access-token": localStorage.getItem('token'),
+		}),
+		 body:	body	})
+	.then((response) => response.json())
+	.then((responseJSON) => {
+		if(responseJSON.success == true) {
+			console.log(responseJSON);
+			// Add interest to interest list of component
+		} else {
+			console.log("Error")
+		}
+	})
+	.catch((error) => {
+		console.error(error);
+	});	
+}
+
