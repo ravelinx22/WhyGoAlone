@@ -63,7 +63,12 @@ router.get('/search', function(req, res){
 					response_json = {};
 					json = JSON.parse(body_f);
 					response_json["success"] = true;
-					response_json["venues"] = json.response.groups[0].items;
+				
+					var venues = json.response.groups[0].items.map((item) => {
+						return item.venue;
+					});
+
+					response_json["venues"] = venues; 
 					res.json(response_json);
 				} catch(error) {
 					res.json({success: false, message: message_error})
