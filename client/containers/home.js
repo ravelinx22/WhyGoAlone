@@ -6,6 +6,7 @@ import { CategoryItem } from '../components/category_item';
 import { SectionTitle } from '../components/section_title';
 
 export default class Home  extends React.Component {
+
   render() {
     return (
 		<div>

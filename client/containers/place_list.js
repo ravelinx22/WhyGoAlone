@@ -3,7 +3,7 @@ import '../styles/styles.css';
 import { PlaceItem } from '../components/place_item';
 import { Container, Row, Col } from 'reactstrap';
 import { PlaceHeaderList } from '../components/place_header_list.js';
-import QueryString from 'query-string';
+import { getMyLocation } from '../actions/geolocation';
 
 export default class PlaceList  extends React.Component {
   constructor(props) {
@@ -11,26 +11,14 @@ export default class PlaceList  extends React.Component {
 	this.state = {
 		name: "",
 		places: [],
+		lat: "40.7243",
+		lon: "-74.0010",
 	}
+	this.getMyLocation = getMyLocation.bind(this)
   }
 
   componentDidMount() {
-	  console.log(this.props);
-	  const query = QueryString.parse(this.props.location.search);
-	  console.log(query.category_id);
-	  fetch("/api/venues/category/" + query.category_id + " ?ll=40.7243,-74.0010")
-	  .then(results => {
-		return results.json();
-	  }).then(data => {
-		let places = data.venues.map((venue) => {
-			console.log(venue);
-			return(
-				<PlaceItem place_id={venue.id} name={venue.name} where={venue.location.address} link_url="/place" key={venue.id}/>
-			);
-		});
-
-		this.setState({places: places, name: query.name});
-	  });
+	  this.getMyLocation(this);
   }
 
   render() {
