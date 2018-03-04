@@ -12,8 +12,8 @@ export default class App extends React.Component {
       <div>
         <Navbar color="dark" className="fixed-top navbar-dark bg-dark">
           <NavbarBrand href="/">Why Go Alone</NavbarBrand>
-		  <Button outline color="danger" className="ml-auto nav_btn">Sign In</Button>
-		  <Button outline color="danger" className="nav_btn">Sign Up</Button>
+		  <Button outline color="danger" onClick={()=>{window.location = "/signIn"}} className="ml-auto nav_btn">Sign In</Button>
+		  <Button outline color="danger" onClick={()=>{window.location = "/signUp"}} className="nav_btn">Sign Up</Button>
         </Navbar>
 		<div class="content">
 			{this.props.children}		
