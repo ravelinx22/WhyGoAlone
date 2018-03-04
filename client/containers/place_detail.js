@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import { PlaceDetailInfo } from '../components/place_detail_info';
 import { LeaveComment } from '../components/leave_comment';
 import { InterestItem } from '../components/interest_item';
+import { loadPlaceDetail } from '../actions/component_actions';
 
 export default class PlaceDetail  extends React.Component {
     constructor(props) {
@@ -12,30 +13,32 @@ export default class PlaceDetail  extends React.Component {
 	this.state = {
 		name: "",
 		address: "",
+		venue_data: {},
 	}
+	this.loadPlaceDetail = loadPlaceDetail.bind(this);
   }
 
   componentDidMount() {
-	  fetch("/api/venues/search/4b61ea3ff964a520002b2ae3")
-	  .then(results => {
-		return results.json();
-	  }).then(data => {
-		console.log(data.venue);
-		console.log(data.venue);
-		this.setState({name: data.venue.name});
-		this.setState({address: data.venue.location.address});
-	  });
+	this.loadPlaceDetail(this);
   }
 
 	
   render() {
+	var i = 0;
+	var components = []
+	if(this.state.algo) {
+		components.push(<div key={i}>{this.state.name}</div>);
+		i++;
+	}
+
     return (
 		<div className="place_detail">
+			{components}
 			<Container>
 				<PlaceHeaderDetail name={this.state.name} where={this.state.address}/>
 			</Container>
 			<Container>
-				<PlaceDetailInfo/>
+				<PlaceDetailInfo venue_data={this.state.venue_data}/>
 			</Container>
 			<Container>
 				<LeaveComment/>
