@@ -1,6 +1,6 @@
 # WhyGoAlone
-Web app that allows users around the world find near by places and people interested in visiting them. Created using node + express + react + Mongo. App created for [WebDev class at uniandes](johnguerra.co/classes/webDevelopment_spring_2018/).
-Requires a Mongo server with a database running locally.
+
+Web app that allows users around the world find near by places and people interested in visiting them. Created using node + express + react + Mongo. Information about different places including location, category and name was taken from [Foursquare's API](https://developer.foursquare.com/). App created for [WebDev class at uniandes](johnguerra.co/classes/webDevelopment_spring_2018/). Requires a Mongo server with a database running locally.
 
 # Running the demo
 
