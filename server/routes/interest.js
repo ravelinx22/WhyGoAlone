@@ -29,4 +29,18 @@ router.post('/', function (req, res) {
 	});
 });
 
+router.get("/:userId", function(req, res) {
+	console.log(req.params.userId.replace(/\s/g,''));
+
+	User.
+	findById(req.params.userId.replace(/\s/g,'')).
+	populate('interests').
+	exec(function (err, user) {
+		if (err) return handleError(err);
+		res = user.interests;
+		console.log(user.interests);
+		res.send(user.interests);
+	});
+});
+
 module.exports=router;
