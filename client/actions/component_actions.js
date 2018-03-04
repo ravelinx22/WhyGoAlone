@@ -73,3 +73,33 @@ export function loadPlaceDetail(component) {
 	  });
 
 }
+
+export function signIn(component) {
+	const body = JSON.stringify({
+			email: component.state.email,
+			password: component.state.password,
+		})
+	console.log(body);
+	console.log(localStorage.getItem('token'));
+	fetch("/api/users/signIn", {
+		method: 'POST',
+		headers: new Headers({
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+		}),
+		 body:	body	})
+	.then((response) => response.json())
+	.then((responseJSON) => {
+		if(responseJSON.success == true) {
+			console.log(responseJSON);
+			localStorage.setItem('token', responseJSON.token);
+			component.props.history.push("/");
+		} else {
+			alert(responseJSON.message);
+		}
+	})
+	.catch((error) => {
+		console.error(error);
+		alert("Error");
+	});	
+}

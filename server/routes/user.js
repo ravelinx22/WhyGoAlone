@@ -34,9 +34,11 @@ router.post('/signIn', function(req, res){
 		if(err) throw err;
 
 		if(!user) {
+			res.status(401);
 			res.json({ success: false, message: 'Authentication failed. User not found.' });
 		} else if(user) {
 			if(user.password != req.body.password) {
+				res.status(401);
 				res.json({ success: false, message: 'Authentication failed. Wrong password.' });
 			} else {
 				var token = jwt.sign({}, config.secret, {
