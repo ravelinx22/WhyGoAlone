@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'reactstrap';
 import { SearchPlaceInput } from './search_place_input';
+import { Link } from 'react-router-dom';
 
 export const HomeHeader = (props) => {
 	return(
@@ -11,8 +12,8 @@ export const HomeHeader = (props) => {
 				</Row>
 				<SearchPlaceInput/>
 				<Row className="justify-content-center">
-					<Button outline color="secondary" className="btn_nearby">Nearby</Button>
-				</Row>
+					<Link to="/places?type=nearby&name=Nearby" className="btn_nearby btn btn-outline-secondary">Nearby</Link>		
+		</Row>
 			</Col>
 		</Row>
 	);

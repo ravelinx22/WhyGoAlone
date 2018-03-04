@@ -8,6 +8,7 @@ import { PlaceHeaderList } from '../components/place_header_list.js';
 export function getMyLocation(component) {
 	const location = window.navigator && window.navigator.geolocation;
     const query = QueryString.parse(component.props.location.search);
+	const type = query.type;
 
     if (location) {
       location.getCurrentPosition((position) => {
@@ -17,12 +18,20 @@ export function getMyLocation(component) {
 		const nearby_url = "/api/venues/nearby?ll="+ll;
 		const category_url = "/api/venues/category/" + query.category_id + "?ll="+ll;
 		const  search_url = "/api/venues/search?query=" + query.query + "&near=" + query.near;
-        
-		fetch(category_url)
+        var url = category_url;
+		if(type == "nearby") {
+			url = nearby_url;
+		}
+
+		console.log(url);
+
+		fetch(url)
 	      .then(results => {
 			return results.json();
 		  }).then(data => {
+			console.log(data.venues);
 		    let places = data.venues.map((venue) => {
+				console.log(data.venue);
 			  return(
 				  <PlaceItem place_id={venue.id} name={venue.name} where={venue.location.address} link_url="/place" key={venue.id}/>
 		    );
