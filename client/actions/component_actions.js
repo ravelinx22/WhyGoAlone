@@ -103,3 +103,34 @@ export function signIn(component) {
 		alert("Error");
 	});	
 }
+
+export function signUp(component) {
+	const body = JSON.stringify({
+			name: component.state.name,
+			email: component.state.email,
+			cell: component.state.cell,
+			password: component.state.password
+		})
+	fetch("/api/users/signUp", {
+		method: 'POST',
+		headers: new Headers({
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+		}),
+		 body:	body	})
+	.then((response) => response.json())
+	.then((responseJSON) => {
+		if(responseJSON.success == true) {
+			console.log(responseJSON);
+			localStorage.setItem('token', responseJSON.token);
+			component.props.history.push("/");
+		} else {
+			alert(responseJSON.message);
+		}
+	})
+	.catch((error) => {
+		console.error(error);
+		alert("Error");
+	});	
+}
+

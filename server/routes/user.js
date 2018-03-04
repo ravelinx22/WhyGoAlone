@@ -15,7 +15,9 @@ router.post('/signUp', function(req, res) {
 	});
 
 	newUser.save(function(err) {
-		if(err) throw err;
+		if(err){ throw err
+			console.log(err);
+		};
 		var token = jwt.sign({}, config.secret,  {
           expiresIn: "24h"
         });
