@@ -13,7 +13,7 @@ export default class PlaceList  extends React.Component {
   }
 
   componentDidMount() {
-	  fetch("http://localhost:8000/api/venues/category/4d4b7104d754a06370d81259?ll=40.7243,-74.0010")
+	  fetch("/api/venues/category/4d4b7104d754a06370d81259?ll=40.7243,-74.0010")
 	  .then(results => {
 		return results.json();
 	  }).then(data => {

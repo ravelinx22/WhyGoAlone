@@ -16,7 +16,7 @@ export default class PlaceDetail  extends React.Component {
   }
 
   componentDidMount() {
-	  fetch("http://localhost:8000/api/venues/search/4b61ea3ff964a520002b2ae3")
+	  fetch("/api/venues/search/4b61ea3ff964a520002b2ae3")
 	  .then(results => {
 		return results.json();
 	  }).then(data => {
