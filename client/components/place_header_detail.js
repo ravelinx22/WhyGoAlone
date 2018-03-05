@@ -13,9 +13,9 @@ export const PlaceHeaderDetail = (props) =>  {
 					<div className="place_header_detail_name">{props.name}</div>
 					<div clasName="place_header_detail_location">{props.where}</div>
 					<hr/>
-					<Link to="/"> 
+					<a href="#leave_comment"> 
 						<FontAwesomeIcon icon={faBookmark} /> I'm Interested 
-					</Link>
+					</a>
 				</div>
 			</div>
 	);

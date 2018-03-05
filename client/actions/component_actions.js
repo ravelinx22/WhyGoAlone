@@ -79,8 +79,9 @@ export function loadPlaceDetail(component) {
 		venue_data["twitter"] = (data.venue.contact.twitter) ? data.venue.contact.twitter: null;
 		venue_data["categories"] = (data.venue.categories) ? data.venue.categories: null ;
 		venue_data["location"] = (data.venue.location) ? data.venue.location : null;
+
 		component.setState({ venue_data: venue_data});
-		  console.log(venue_data);
+		console.log(venue_data);
 	  });
 
 }
@@ -142,6 +143,10 @@ export function signUp(component) {
 		if(responseJSON.success == true) {
 			console.log(responseJSON);
 			localStorage.setItem('token', responseJSON.token);
+			localStorage.setItem('user_name', responseJSON.user.name);
+			localStorage.setItem('user_cell', responseJSON.user.cell);
+			localStorage.setItem('user_email', responseJSON.user.email);
+			localStorage.setItem('user_id', responseJSON.token.user_id);
 			component.props.history.push("/");
 		} else {
 			alert(responseJSON.message);
@@ -164,22 +169,17 @@ export function createInterest(component) {
 			venue: place_id,
 		})
 
-	console.log(body);
 	fetch("/api/interest", {
 		method: 'POST',
 		headers: new Headers({
-			'Accept': 'application/json',
-			'Content-Type': 'application/json',
+			"Content-Type": "application/json",
 			"x-access-token": localStorage.getItem('token'),
 		}),
 		 body:	body	})
 	.then((response) => response.json())
 	.then((responseJSON) => {
-		if(responseJSON.success == true) {
 			console.log(responseJSON);
-		} else {
-			console.log("Error")
-		}
+		window.location.reload();
 	})
 	.catch((error) => {
 		console.error(error);
@@ -192,6 +192,7 @@ export function getVenueInterest(component) {
 	
 	fetch("/api/interest/venue/" + place_id, {
 		headers: new Headers({
+			"Content-Type": "application/json",
 			"x-access-token": localStorage.getItem('token'),
 		})
 	})
@@ -203,7 +204,7 @@ export function getVenueInterest(component) {
 			  const interest = item.interests[0];
 			  console.log(interest);
 			  return(	
-					<InterestItem name={item.name}  message={interest.message}  profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url="/"/>	
+					<InterestItem name={item.name}  message={interest.message}  profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url={"https://api.whatsapp.com/send?phone=57" + item.cell}/>	
 			  );
 		  });
 		component.setState({interest_list: interest_list});
