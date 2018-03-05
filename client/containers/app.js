@@ -40,7 +40,7 @@ export default class App extends React.Component {
 		</div>
 		<footer className="bg-dark">
 			<div class="footer_brand">Why Go Alone</div>
-			<div class="footer_makers">William Ravelo M & Nicolas Aguilas</div>
+			<div class="footer_makers">William Ravelo M & Nicolas Aguilar</div>
 			<div class="footer_license">MIT License</div>
 		</footer>
   </div>
