@@ -52,7 +52,7 @@ export default class PlaceDetail  extends React.Component {
 		<div className="place_detail">
 			{components}
 			<Container>
-				<PlaceHeaderDetail name={this.state.name} where={this.state.address}/>
+				<PlaceHeaderDetail name={this.state.name} where={this.state.address} src="../img/place_item.jpg"/>
 			</Container>
 			<Container>
 				<PlaceDetailInfo venue_data={this.state.venue_data}/>

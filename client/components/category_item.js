@@ -8,7 +8,7 @@ export const CategoryItem = (props) =>  {
 		<Col md="4">
 			<Link to={props.link_url}>
 			<Row className="category_item_container">
-				<img src={props.src} alt="algo" className="category_item_img"/>
+				<img src={props.src} alt="category_item" className="category_item_img"/>
 			<div className="category_item_info">
 				<div className="category_item_name">{props.name}</div>
 				<div className="category_item_description">{props.description}</div>

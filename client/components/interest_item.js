@@ -9,7 +9,7 @@ export const InterestItem = (props) =>  {
 	if(props.hide_contact) {
 	return(
 		<Row className="interest_item_container">
-			<img src={props.profile_pic} alt="algo" className="interest_item_pic"/>
+			<img src={props.profile_pic} alt="profile_pic" className="interest_item_pic rounded-circle"/>
 			<div className="interest_item_info">
 				<div className="interest_item_info_name">{props.name}</div>
 				<div className="interest_item_info_comment">{props.message}</div>
@@ -19,7 +19,7 @@ export const InterestItem = (props) =>  {
 	} else {
 	return(
 		<Row className="interest_item_container">
-			<img src={props.profile_pic} alt="algo" className="interest_item_pic"/>
+			<img src={props.profile_pic} alt="profile_pic" className="interest_item_pic"/>
 			<div className="interest_item_info">
 				<div className="interest_item_info_name">{props.name}</div>
 				<div className="interest_item_info_comment">{props.message}</div>

@@ -189,10 +189,12 @@ footer {
 }
 
 .place_item_name {
+  color: #33373D;
 	font-size: 17px;
 }
 
 .place_item_location {
+  font-weight: 400;
 	font-size: 14px;
 }
 
@@ -219,6 +221,7 @@ footer {
 }
 
 .place_header_list_name {
+  color: #33373D;
 	font-size: 2rem;
 }
 
@@ -261,6 +264,7 @@ footer {
 }
 
 .place_header_detail_name {
+  color: #33373D;
 	font-size: 120%;
 }
 
@@ -285,6 +289,7 @@ footer {
 }
 
 .place_detail_info_item_name {
+  color: #33373D;
 	font-size: 18px;
 }
 
@@ -314,14 +319,18 @@ footer {
 }
 
 /* Interest Item */
+.interest_item_info_name {
+  color: #33373D;
+}
+
 .interest_item_pic {
-	height: 32px;
-	width: 32px;
-	margin-right: 5px;
+	height: 48px;
+	width: 48px;
+	margin-right: 10px;
 }
 
 .interest_item_info {
-	width: calc(100% - 32px - 5px);
+	width: calc(100% - 58px - 5px);
 }
 
 .interest_item_container {
@@ -333,7 +342,7 @@ footer {
 }
 
 .sign_Image{
-
+  margin-top: 10px;
 	float: left;
 	padding: 0 15px;
 	min-height: 1px;

@@ -70,7 +70,7 @@ export default class SignUp  extends React.Component {
 							<Button  className = "input_full" outline color="secondary inner_btn" onClick={() => this.signUp(this)}>Sign Up</Button>
 						</Col>
 						<Col md = "6" className = "sign_Image">
-						<img src="https://b.zmtcdn.com/data/pictures/7/18589977/8c0f5f641d2707f0ad96cbb1cc259625_top_thumb_620_314.jpg?output-format=webp" alt="algo" className="place_item_img"/>
+						<img src="../img/sign_up.jpg" alt="sign_up" className="place_item_img"/>
 						</Col>
 					</Row>
 				</div>

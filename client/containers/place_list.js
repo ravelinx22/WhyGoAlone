@@ -9,7 +9,7 @@ export default class PlaceList  extends React.Component {
   constructor(props) {
 	super(props);
 	this.state = {
-		name: "",
+		name: "Search",
 		places: [],
 		lat: "40.7243",
 		lon: "-74.0010",

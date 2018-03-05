@@ -209,7 +209,7 @@ export function getVenueInterest(component) {
 			 }
 			  var hide_contact = (item._id === localStorage.getItem("user_id"));
 			  return(
-					<InterestItem hide_contact={hide_contact} name={item.name}  message={interest.message}  profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url={"https://api.whatsapp.com/send?phone=57" + item.cell}/>
+					<InterestItem hide_contact={hide_contact} name={item.name}  message={interest.message}  profile_pic="../img/no_profile_pic.jpg" contact_url={"https://api.whatsapp.com/send?phone=57" + item.cell}/>
 			  );
 		  });
 		component.setState({interest_list: interest_list});

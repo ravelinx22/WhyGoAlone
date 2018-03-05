@@ -8,7 +8,7 @@ export const HomeHeader = (props) => {
 		<Row>
 			<Col md="12">
 				<Row className="justify-content-center home_header_logo">
-					<img src="../img/logo.png" alt="log" class="home_header_logo"/>
+					<img src="../img/logo.png" alt="logo" class="home_header_logo"/>
 				</Row>
 				<SearchPlaceInput/>
 				<Row className="justify-content-center">
