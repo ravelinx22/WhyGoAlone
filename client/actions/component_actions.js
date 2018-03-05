@@ -200,8 +200,13 @@ export function getVenueInterest(component) {
 		return results.json();
 	  }).then(data => {
 		    let interest_list = data.map((item) => {
-			  
-			  const interest = item.interests[0];
+			  var interest = null;
+			 for(let inter of item.interests) {
+				if(inter.venue === place_id) {
+					interest = inter;
+					break;
+				}
+			 }
 			  console.log(interest);
 			  return(	
 					<InterestItem name={item.name}  message={interest.message}  profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url={"https://api.whatsapp.com/send?phone=57" + item.cell}/>	
