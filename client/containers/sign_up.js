@@ -1,7 +1,7 @@
-import React from 'react';
-import '../styles/styles.css'
-import {Button, Container, Col, Row} from 'reactstrap';
-import { signUp } from '../actions/component_actions';
+import React from "react";
+import "../styles/styles.css"
+import {Button, Container, Col, Row} from "reactstrap";
+import { signUp } from "../actions/component_actions";
 
 
 export default class SignUp  extends React.Component {
@@ -41,11 +41,11 @@ export default class SignUp  extends React.Component {
 	}
 
 
-  componentDidMount() {  
+  componentDidMount() {
 	const { history } = this.props;
 
-	if (localStorage.getItem('token')) {
-		history.push('/');
+	if (localStorage.getItem("token")) {
+		history.push("/");
 	}
   }
 
@@ -70,7 +70,7 @@ export default class SignUp  extends React.Component {
 							<Button  className = "input_full" outline color="secondary" onClick={() => this.signUp(this)}>Sign Up</Button>
 						</Col>
 						<Col md = "6" className = "sign_Image">
-						<img src="https://b.zmtcdn.com/data/pictures/7/18589977/8c0f5f641d2707f0ad96cbb1cc259625_top_thumb_620_314.jpg?output-format=webp" alt="algo" className="place_item_img"/>			
+						<img src="https://b.zmtcdn.com/data/pictures/7/18589977/8c0f5f641d2707f0ad96cbb1cc259625_top_thumb_620_314.jpg?output-format=webp" alt="algo" className="place_item_img"/>
 						</Col>
 					</Row>
 				</div>
@@ -79,4 +79,3 @@ export default class SignUp  extends React.Component {
 			);
 	}
 }
-

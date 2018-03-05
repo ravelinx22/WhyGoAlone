@@ -1,6 +1,6 @@
-import React from 'react'
-import '../styles/styles.css';
-import { Container, Row, Col, Button } from 'reactstrap';
+import React from "react"
+import "../styles/styles.css";
+import { Container, Row, Col, Button } from "reactstrap";
 
 export const LeaveComment = (props) =>  {
 	return(

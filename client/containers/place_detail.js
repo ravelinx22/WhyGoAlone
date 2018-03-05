@@ -1,11 +1,11 @@
-import React from 'react';
-import '../styles/styles.css';
-import { PlaceHeaderDetail } from '../components/place_header_detail';
-import { Container, Row, Col, Button } from 'reactstrap';
-import { PlaceDetailInfo } from '../components/place_detail_info';
-import { LeaveComment } from '../components/leave_comment';
-import { InterestItem } from '../components/interest_item';
-import { loadPlaceDetail, createInterest, getVenueInterest } from '../actions/component_actions';
+import React from "react";
+import "../styles/styles.css";
+import { PlaceHeaderDetail } from "../components/place_header_detail";
+import { Container, Row, Col, Button } from "reactstrap";
+import { PlaceDetailInfo } from "../components/place_detail_info";
+import { LeaveComment } from "../components/leave_comment";
+import { InterestItem } from "../components/interest_item";
+import { loadPlaceDetail, createInterest, getVenueInterest } from "../actions/component_actions";
 
 export default class PlaceDetail  extends React.Component {
     constructor(props) {
@@ -21,25 +21,25 @@ export default class PlaceDetail  extends React.Component {
 		this.createInterest = createInterest.bind(this);
 		this.getVenueInterest = getVenueInterest.bind(this);
 	}
-  
+
   updateComment(evt) {
 	this.setState({
 		user_comment: evt.target.value
 	});
   }
 
-  componentDidMount() {  
+  componentDidMount() {
 	const { history } = this.props;
 
-	if (!localStorage.getItem('token')) {
-		history.push('/signIn');
+	if (!localStorage.getItem("token")) {
+		history.push("/signIn");
 	} else {
 		this.loadPlaceDetail(this);
 		this.getVenueInterest(this);
 	}
   }
 
-	
+
   render() {
 	var i = 0;
 	var components = []

@@ -1,7 +1,7 @@
-import React from 'react'
-import '../styles/styles.css';
-import { Container, Row, Col, Button } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import React from "react"
+import "../styles/styles.css";
+import { Container, Row, Col, Button } from "reactstrap";
+import { Link } from "react-router-dom"
 
 export const CategoryItem = (props) =>  {
 	return(

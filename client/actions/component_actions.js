@@ -1,10 +1,10 @@
-import QueryString from 'query-string';
-import React from 'react';
-import '../styles/styles.css';
-import { PlaceItem } from '../components/place_item';
-import { Container, Row, Col } from 'reactstrap';
-import { PlaceHeaderList } from '../components/place_header_list.js';
-import { InterestItem } from '../components/interest_item';
+import QueryString from "query-string";
+import React from "react";
+import "../styles/styles.css";
+import { PlaceItem } from "../components/place_item";
+import { Container, Row, Col } from "reactstrap";
+import { PlaceHeaderList } from "../components/place_header_list.js";
+import { InterestItem } from "../components/interest_item";
 
 export function getMyLocation(component) {
 	const location = window.navigator && window.navigator.geolocation;
@@ -30,7 +30,7 @@ export function getMyLocation(component) {
 
 		fetch(url, {
 			headers: new Headers({
-				"x-access-token": localStorage.getItem('token'),
+				"x-access-token": localStorage.getItem("token"),
 			})
 		})
 	      .then(results => {
@@ -39,16 +39,16 @@ export function getMyLocation(component) {
 			console.log(data.venues);
 		    let places = data.venues.map((venue) => {
 				console.log(data.venue);
-			  return(
+			  return (
 				  <PlaceItem name={venue.name} where={venue.location.address} link_url={"/place?place_id=" + venue.id} key={venue.id}/>
 		    );
 		  });
 
 		  component.setState({places: places, name: query.name});
 	  });
-		  
+
 	  }, (error) => {
-        component.setState({ lat: 'err-latitude', lon: 'err-longitude' });
+        component.setState({ lat: "err-latitude", lon: "err-longitude" });
       })
     }
 }
@@ -59,7 +59,7 @@ export function loadPlaceDetail(component) {
 
 	fetch("/api/venues/search/" + place_id, {
 		headers: new Headers({
-			"x-access-token": localStorage.getItem('token'),
+			"x-access-token": localStorage.getItem("token"),
 		})
 	})
 	  .then(results => {
@@ -92,23 +92,23 @@ export function signIn(component) {
 			password: component.state.password,
 		})
 
-	console.log(localStorage.getItem('token'));
-	console.log(localStorage.getItem('user_cell'));
-	console.log(localStorage.getItem('user_name'));
-	console.log(localStorage.getItem('user_id'));
-	console.log(localStorage.getItem('user_email'));
+	console.log(localStorage.getItem("token"));
+	console.log(localStorage.getItem("user_cell"));
+	console.log(localStorage.getItem("user_name"));
+	console.log(localStorage.getItem("user_id"));
+	console.log(localStorage.getItem("user_email"));
 	fetch("/api/users/signIn", {
-		method: 'POST',
+		method: "POST",
 		headers: new Headers({
-			'Accept': 'application/json',
-			'Content-Type': 'application/json',
+			"Accept": "application/json",
+			"Content-Type": "application/json",
 		}),
 		 body:	body	})
 	.then((response) => response.json())
 	.then((responseJSON) => {
 		if(responseJSON.success == true) {
 			console.log(responseJSON);
-			localStorage.setItem('token', responseJSON.token);
+			localStorage.setItem("token", responseJSON.token);
 			localStorage.setItem("user_name", responseJSON.user.name);
 			localStorage.setItem("user_cell", responseJSON.user.cell);
 			localStorage.setItem("user_email", responseJSON.user.email);
@@ -121,7 +121,7 @@ export function signIn(component) {
 	.catch((error) => {
 		console.error(error);
 		alert("Error");
-	});	
+	});
 }
 
 export function signUp(component) {
@@ -132,21 +132,21 @@ export function signUp(component) {
 			password: component.state.password
 		})
 	fetch("/api/users/signUp", {
-		method: 'POST',
+		method: "POST",
 		headers: new Headers({
-			'Accept': 'application/json',
-			'Content-Type': 'application/json',
+			"Accept": "application/json",
+			"Content-Type": "application/json",
 		}),
 		 body:	body	})
 	.then((response) => response.json())
 	.then((responseJSON) => {
 		if(responseJSON.success == true) {
 			console.log(responseJSON);
-			localStorage.setItem('token', responseJSON.token);
-			localStorage.setItem('user_name', responseJSON.user.name);
-			localStorage.setItem('user_cell', responseJSON.user.cell);
-			localStorage.setItem('user_email', responseJSON.user.email);
-			localStorage.setItem('user_id', responseJSON.user._id);
+			localStorage.setItem("token", responseJSON.token);
+			localStorage.setItem("user_name", responseJSON.user.name);
+			localStorage.setItem("user_cell", responseJSON.user.cell);
+			localStorage.setItem("user_email", responseJSON.user.email);
+			localStorage.setItem("user_id", responseJSON.user._id);
 			component.props.history.push("/");
 		} else {
 			alert(responseJSON.message);
@@ -165,15 +165,15 @@ export function createInterest(component) {
 	console.log(component.state.user_comment);
 	const body = JSON.stringify({
 			message: component.state.user_comment,
-			person: localStorage.getItem('user_id'),
+			person: localStorage.getItem("user_id"),
 			venue: place_id,
 		})
 
 	fetch("/api/interest", {
-		method: 'POST',
+		method: "POST",
 		headers: new Headers({
 			"Content-Type": "application/json",
-			"x-access-token": localStorage.getItem('token'),
+			"x-access-token": localStorage.getItem("token"),
 		}),
 		 body:	body	})
 	.then((response) => response.json())
@@ -186,14 +186,14 @@ export function createInterest(component) {
 	});
 }
 
-export function getVenueInterest(component) {	
+export function getVenueInterest(component) {
 	const query = QueryString.parse(component.props.location.search);
 	const place_id = query.place_id;
-	
+
 	fetch("/api/interest/venue/" + place_id, {
 		headers: new Headers({
 			"Content-Type": "application/json",
-			"x-access-token": localStorage.getItem('token'),
+			"x-access-token": localStorage.getItem("token"),
 		})
 	})
 	  .then(results => {
@@ -208,8 +208,8 @@ export function getVenueInterest(component) {
 				}
 			 }
 			  var hide_contact = (item._id === localStorage.getItem("user_id"));
-			  return(	
-					<InterestItem hide_contact={hide_contact} name={item.name}  message={interest.message}  profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url={"https://api.whatsapp.com/send?phone=57" + item.cell}/>	
+			  return(
+					<InterestItem hide_contact={hide_contact} name={item.name}  message={interest.message}  profile_pic="https://igx.4sqi.net/img/user/32x32/RP0QUWZS3EMFWOTQ.jpg" contact_url={"https://api.whatsapp.com/send?phone=57" + item.cell}/>
 			  );
 		  });
 		component.setState({interest_list: interest_list});

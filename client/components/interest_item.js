@@ -1,9 +1,9 @@
-import React from 'react'
-import '../styles/styles.css';
-import { Container, Row, Col, Button } from 'reactstrap';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faBookmark from '@fortawesome/fontawesome-free-solid/faPhoneSquare'
-import { Link } from 'react-router-dom';
+import React from "react"
+import "../styles/styles.css";
+import { Container, Row, Col, Button } from "reactstrap";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome"
+import faBookmark from "@fortawesome/fontawesome-free-solid/faPhoneSquare"
+import { Link } from "react-router-dom";
 
 export const InterestItem = (props) =>  {
 	if(props.hide_contact) {

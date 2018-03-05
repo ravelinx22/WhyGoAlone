@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
   Navbar,
   NavbarBrand,
   Button
-} from 'reactstrap';
-import '../styles/styles.css'
+} from "reactstrap";
+import "../styles/styles.css"
 
 export default class App extends React.Component {
   render() {
-	if(!localStorage.getItem('token')) {
+	if(!localStorage.getItem("token")) {
 		    return (
       <div>
         <Navbar color="dark" className="fixed-top navbar-dark bg-dark">
@@ -17,7 +17,7 @@ export default class App extends React.Component {
 		  <Button outline color="danger" onClick={()=>{window.location = "/signUp"}} className="nav_btn">Sign Up</Button>
         </Navbar>
 		<div class="content">
-			{this.props.children}		
+			{this.props.children}
 		</div>
 		<footer className="bg-dark">
 			<div class="footer_brand">Why Go Alone</div>
@@ -25,18 +25,18 @@ export default class App extends React.Component {
 			<div class="footer_license">MIT License</div>
 		</footer>
   </div>
-    ); 
+    );
 	} else {
 		return (
       <div>
         <Navbar color="dark" className="fixed-top navbar-dark bg-dark">
           <NavbarBrand href="/">Why Go Alone</NavbarBrand>
-		  <Button outline color="danger" onClick={()=>{ 
+		  <Button outline color="danger" onClick={()=>{
 			  localStorage.clear();
 			  window.location = "/"}} className="ml-auto nav_btn">Sign Out</Button>
         </Navbar>
 		<div class="content">
-			{this.props.children}		
+			{this.props.children}
 		</div>
 		<footer className="bg-dark">
 			<div class="footer_brand">Why Go Alone</div>
@@ -48,4 +48,3 @@ export default class App extends React.Component {
 	}
  }
 }
-

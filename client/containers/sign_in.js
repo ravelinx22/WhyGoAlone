@@ -1,7 +1,7 @@
-import React from 'react';
-import '../styles/styles.css'
-import {Button, Container, Col, Row} from 'reactstrap';
-import { signIn } from '../actions/component_actions';
+import React from "react";
+import "../styles/styles.css"
+import {Button, Container, Col, Row} from "reactstrap";
+import { signIn } from "../actions/component_actions";
 
 export default class SignIn  extends React.Component {
 	constructor(props) {
@@ -12,7 +12,7 @@ export default class SignIn  extends React.Component {
 		}
 		this.signIn = signIn.bind(this);
 	}
-	
+
 	updateEmail(evt) {
 		this.setState({
 			email: evt.target.value
@@ -25,12 +25,12 @@ export default class SignIn  extends React.Component {
 		});
 	}
 
-	
-  componentDidMount() {  
+
+  componentDidMount() {
 	const { history } = this.props;
 
-	if (localStorage.getItem('token')) {
-		history.push('/');
+	if (localStorage.getItem("token")) {
+		history.push("/");
 	}
   }
 
@@ -51,7 +51,7 @@ export default class SignIn  extends React.Component {
 							<Button outline color="secondary" onClick={() => this.signIn(this)}>Sign In</Button>
 						</Col>
 						<Col md = "6" className = "sign_Image">
-							<img src="https://b.zmtcdn.com/data/pictures/7/18589977/8c0f5f641d2707f0ad96cbb1cc259625_top_thumb_620_314.jpg?output-format=webp" alt="algo" className="place_item_img"/>			
+							<img src="https://b.zmtcdn.com/data/pictures/7/18589977/8c0f5f641d2707f0ad96cbb1cc259625_top_thumb_620_314.jpg?output-format=webp" alt="algo" className="place_item_img"/>
 						</Col>
 					</Row>
 				</div>
@@ -60,4 +60,3 @@ export default class SignIn  extends React.Component {
 			);
 	}
 }
-

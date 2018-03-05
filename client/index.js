@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './containers/app';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./containers/app";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import SignUp from "./containers/sign_up";
 import SignIn from "./containers/sign_in";
@@ -21,4 +21,4 @@ ReactDOM.render(
 			</Switch>
 		</App>
 	</Router>
-	,document.getElementById('app'));
+	,document.getElementById("app"));

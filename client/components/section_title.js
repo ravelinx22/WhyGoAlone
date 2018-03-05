@@ -1,6 +1,6 @@
-import React from 'react'
-import { Container, Row, Col, Button } from 'reactstrap';
-import { SearchPlaceInput } from './search_place_input';
+import React from "react"
+import { Container, Row, Col, Button } from "reactstrap";
+import { SearchPlaceInput } from "./search_place_input";
 
 export const SectionTitle  = (props) => {
 	return(

@@ -1,9 +1,9 @@
-import React from 'react';
-import '../styles/styles.css';
-import { PlaceItem } from '../components/place_item';
-import { Container, Row, Col } from 'reactstrap';
-import { PlaceHeaderList } from '../components/place_header_list.js';
-import { getMyLocation } from '../actions/component_actions';
+import React from "react";
+import "../styles/styles.css";
+import { PlaceItem } from "../components/place_item";
+import { Container, Row, Col } from "reactstrap";
+import { PlaceHeaderList } from "../components/place_header_list.js";
+import { getMyLocation } from "../actions/component_actions";
 
 export default class PlaceList  extends React.Component {
   constructor(props) {
@@ -16,12 +16,12 @@ export default class PlaceList  extends React.Component {
 	}
 	this.getMyLocation = getMyLocation.bind(this);
   }
-	
+
   componentDidMount() {
 	const { history } = this.props;
 
-	if (!localStorage.getItem('token')) {
-		history.push('/signIn');
+	if (!localStorage.getItem("token")) {
+		history.push("/signIn");
 	} else {
 	  this.getMyLocation(this);
 	}

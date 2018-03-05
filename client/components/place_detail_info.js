@@ -1,7 +1,7 @@
-import React from 'react'
-import '../styles/styles.css';
-import { Container, Row, Col, Button } from 'reactstrap';
-import { PlaceDetailInfoItem } from './place_detail_info_item';
+import React from "react"
+import "../styles/styles.css";
+import { Container, Row, Col, Button } from "reactstrap";
+import { PlaceDetailInfoItem } from "./place_detail_info_item";
 
 export const PlaceDetailInfo = (props) =>  {
 	var i = 0;
