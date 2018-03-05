@@ -29,7 +29,7 @@ export default class SearchPlaceInput extends React.Component  {
 		<Row className="justify-content-center">
 			<input type="text" value={this.state.query} onChange={(evt) => this.updateQuery(evt)} placeholder="I'm searching for..." className="search_input"/>
 			<input type="text" value={this.state.near} onChange={(evt) => this.updateNear(evt)} placeholder="City" className="search_input"/>
-			<Link to={"/places?type=search&name=Search&query=" + this.state.query + "&near=" + this.state.near} className="btn_search btn btn-outline-secondary">Search</Link>
+			<Link to={"/places?type=search&name=Search&query=" + this.state.query + "&near=" + this.state.near} className="btn_search btn btn-outline-secondary inner_btn">Search</Link>
 		</Row>
 	);
 }

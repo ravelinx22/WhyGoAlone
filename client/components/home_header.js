@@ -8,11 +8,11 @@ export const HomeHeader = (props) => {
 		<Row>
 			<Col md="12">
 				<Row className="justify-content-center home_header_logo">
-					Why Go Alone
+					<img src="../img/logo.png" alt="log" class="home_header_logo"/>
 				</Row>
 				<SearchPlaceInput/>
 				<Row className="justify-content-center">
-					<Link to="/places?type=nearby&name=Nearby" className="btn_nearby btn btn-outline-secondary">Nearby</Link>
+					<Link to="/places?type=nearby&name=Nearby" className="btn_nearby btn btn-outline-secondary inner_btn">Nearby</Link>
 		</Row>
 			</Col>
 		</Row>

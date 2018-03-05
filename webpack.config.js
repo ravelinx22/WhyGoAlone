@@ -18,6 +18,10 @@ module.exports = {
     {
       test: /\.css$/,
       loader: ["style-loader", "css-loader"]
+    },
+    {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      loader: "url-loader?name=client/img/[name].[ext]"
     }
     ]
   },

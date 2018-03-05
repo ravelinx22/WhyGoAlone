@@ -12,7 +12,7 @@ export default class App extends React.Component {
 		    return (
       <div>
         <Navbar color="dark" className="fixed-top navbar-dark bg-dark">
-          <NavbarBrand href="/">Why Go Alone</NavbarBrand>
+          <NavbarBrand href="/"><img src="../img/logo.png" alt="log" class="navbar_logo"/></NavbarBrand>
 		  <Button outline color="danger" onClick={()=>{window.location = "/signIn"}} className="ml-auto nav_btn">Sign In</Button>
 		  <Button outline color="danger" onClick={()=>{window.location = "/signUp"}} className="nav_btn">Sign Up</Button>
         </Navbar>
@@ -20,7 +20,7 @@ export default class App extends React.Component {
 			{this.props.children}
 		</div>
 		<footer className="bg-dark">
-			<div class="footer_brand">Why Go Alone</div>
+			<div class="footer_brand"><img src="../img/logo.png" alt="log" class="footer_logo"/></div>
 			<div class="footer_makers">William Ravelo M & Nicolas Aguilas</div>
 			<div class="footer_license">MIT License</div>
 		</footer>
@@ -30,7 +30,7 @@ export default class App extends React.Component {
 		return (
       <div>
         <Navbar color="dark" className="fixed-top navbar-dark bg-dark">
-          <NavbarBrand href="/">Why Go Alone</NavbarBrand>
+          <NavbarBrand href="/"><img src="../img/logo.png" alt="log" class="navbar_logo"/></NavbarBrand>
 		  <Button outline color="danger" onClick={()=>{
 			  localStorage.clear();
 			  window.location = "/"}} className="ml-auto nav_btn">Sign Out</Button>
@@ -39,7 +39,7 @@ export default class App extends React.Component {
 			{this.props.children}
 		</div>
 		<footer className="bg-dark">
-			<div class="footer_brand">Why Go Alone</div>
+			<div class="footer_brand"><img src="../img/logo.png" alt="log" class="footer_logo"/></div>
 			<div class="footer_makers">William Ravelo M & Nicolas Aguilar</div>
 			<div class="footer_license">MIT License</div>
 		</footer>
