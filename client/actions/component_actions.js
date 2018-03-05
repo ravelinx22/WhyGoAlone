@@ -145,7 +145,7 @@ export function signUp(component) {
 			localStorage.setItem('user_name', responseJSON.user.name);
 			localStorage.setItem('user_cell', responseJSON.user.cell);
 			localStorage.setItem('user_email', responseJSON.user.email);
-			localStorage.setItem('user_id', responseJSON.token.user_id);
+			localStorage.setItem('user_id', responseJSON.user._id);
 			component.props.history.push("/");
 		} else {
 			alert(responseJSON.message);
