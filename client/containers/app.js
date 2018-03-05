@@ -8,7 +8,8 @@ import '../styles/styles.css'
 
 export default class App extends React.Component {
   render() {
-    return (
+	if(!localStorage.getItem('token')) {
+		    return (
       <div>
         <Navbar color="dark" className="fixed-top navbar-dark bg-dark">
           <NavbarBrand href="/">Why Go Alone</NavbarBrand>
@@ -24,7 +25,27 @@ export default class App extends React.Component {
 			<div class="footer_license">MIT License</div>
 		</footer>
   </div>
-    );
-  }
+    ); 
+	} else {
+		return (
+      <div>
+        <Navbar color="dark" className="fixed-top navbar-dark bg-dark">
+          <NavbarBrand href="/">Why Go Alone</NavbarBrand>
+		  <Button outline color="danger" onClick={()=>{ 
+			  localStorage.clear();
+			  window.location = "/"}} className="ml-auto nav_btn">Sign Out</Button>
+        </Navbar>
+		<div class="content">
+			{this.props.children}		
+		</div>
+		<footer className="bg-dark">
+			<div class="footer_brand">Why Go Alone</div>
+			<div class="footer_makers">William Ravelo M & Nicolas Aguilas</div>
+			<div class="footer_license">MIT License</div>
+		</footer>
+  </div>
+		);
+	}
+ }
 }
 
