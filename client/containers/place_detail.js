@@ -58,7 +58,7 @@ export default class PlaceDetail  extends React.Component {
 				<PlaceDetailInfo venue_data={this.state.venue_data}/>
 			</Container>
 			<Container>
-				<LeaveComment inputListener={(evt) => this.updateComment(evt)} leaveComment={() => this.createInterest(this)}/>
+				<LeaveComment id="leave_comment" inputListener={(evt) => this.updateComment(evt)} leaveComment={() => this.createInterest(this)}/>
 			</Container>
 			<Container>
 				<Col md="12" className="interest_item_list">

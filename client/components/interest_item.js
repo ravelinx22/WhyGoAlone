@@ -13,9 +13,9 @@ export const InterestItem = (props) =>  {
 				<div className="interest_item_info_name">{props.name}</div>
 				<div className="interest_item_info_comment">{props.message}</div>
 				<div className="btn_contact_interested">
-					<Link to={props.contact_url}>
+					<a href={props.contact_url} target="_blank">
 						<FontAwesomeIcon icon={faBookmark}/> Contact
-					</Link>
+					</a>
 				</div>
 			</div>
 		</Row>
