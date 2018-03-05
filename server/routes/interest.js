@@ -16,14 +16,14 @@ router.post("/", function(req, res) {
       });
 
       newInterest.save(function(err) {
-        if (err) return handleError(err);
+        if (err) throw err;
       });
 
       User.findById(req.body.person, function(err, user) {
-        if (err) return handleError(err);
+        if (err) throw err;
         user.interests.push(newInterest);
-        user.save(function(err, updatedUser) {
-          if (err) return handleError(err);
+        user.save(function(err) {
+          if (err) throw err;
 
         });
       });
@@ -46,7 +46,7 @@ router.get("/user/:userId", function(req, res) {
       User.findById(req.params.userId.replace(/\s/g, "")).
         populate("interests").
         exec(function(err, user) {
-          if (err) return handleError(err);
+          if (err) throw err;
 
           res.interests = user.interests;
           res.send(user.interests);
@@ -69,7 +69,7 @@ router.get("/venue/:venueId", function(req, res) {
       User.find({}).
         populate("interests").
         exec(function(err, users) {
-          if (err) return handleError(err);
+          if (err) throw err;
           let afterFilter = users.filter(function(u) {
             let c = u.interests.filter(function(i) {
               return i.venue === req.params.venueId;
