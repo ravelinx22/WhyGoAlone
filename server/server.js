@@ -6,6 +6,7 @@ var morgan = require("morgan");
 var dotenv = require("dotenv");
 dotenv.config();
 
+
 // IMPORTS //
 var indexRoutes = require("./routes/index");
 
@@ -15,7 +16,9 @@ var app = express();
 // MIDDLEWARE //
 app.use(express.static(path.join(__dirname, "../client")));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
@@ -23,8 +26,9 @@ app.use(morgan("dev"));
 app.use("/", indexRoutes);
 
 // ERROR HANDLER //
-app.use(function (err, req, res) {
+app.use(function(err, req, res) {
   res.status(err.status || 500);
 });
+
 
 module.exports = app;
